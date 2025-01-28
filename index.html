@@ -1,0 +1,1721 @@
+<!DOCTYPE html>
+<html lang="sr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>EduAI - Obrazovna Revolucija</title>
+  
+  <!-- SEO Meta Tagovi -->
+  <meta name="description" content="EduAI pruža personalizovano i globalno dostupno obrazovanje korišćenjem veštačke inteligencije.">
+  <meta name="keywords" content="EduAI, univerzitet, obrazovanje, online učenje, veštačka inteligencija">
+
+  <!-- Bootstrap CSS -->
+  <link
+    href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css"
+    rel="stylesheet"
+  >
+  
+  <!-- Font Awesome Ikonice -->
+  <link
+    rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
+  >
+
+    <style>
+    :root {
+      --primary-color: #2A2A72;   /* Tamnija plava */
+      --secondary-color: #009FFD; /* Svetlija plava */
+      --accent-color: #FF6B6B;    /* Crvenkasta */
+    }
+
+    body {
+      margin-top: 56px; /* Rezerva za fiksiranu navigaciju */
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      color: #333;
+    }
+
+    /* ----------------
+     NAVIGACIJA 
+    ------------------*/
+    .navbar {
+      background-color: var(--primary-color) !important;
+      box-shadow: 0 2px 10px rgba(255, 255, 255, 0.9);
+      padding: 12px 0;
+     transition: all 0.3s ease;  /* Ovo je vec postojalo */
+    /* Dodati ove dve linije: */
+      top: 0;
+      position: fixed;
+      width: 100%;
+      z-index: 1000;
+    }
+
+    /* Dodati NOVI CSS blok ispod postojeceg .navbar stila: */
+    .navbar.scrolled-down {
+     transform: translateY(-100%);
+    }
+
+    .navbar.scrolled-up {
+     transform: translateY(0);
+     box-shadow: 0 2px 10px rgba(255, 255, 255, 0.9);
+    }
+
+    .navbar-brand {
+     font-weight: 600;
+     transition: transform 0.3s;
+     font-size: 1.5rem;
+     color: #fff !important;
+    }
+    .nav-link {
+     color: rgba(255, 255, 255, 0.9) !important;
+     margin: 0 10px;
+     padding: 8px 15px !important;
+     border-radius: 20px;
+     transition: all 0.3s ease;
+    }
+    .nav-link:hover {
+    background-color: rgba(255, 255, 255, 0.1);
+    color: var(--accent-color) !important; /* Ovo je nova linija */
+    transform: translateY(-2px) scale(1.05);
+    }
+    .navbar-toggler {
+     border-color: rgba(255, 255, 255, 0.5);
+    }
+
+    /* ----------------
+       HERO SEKCIJA
+    ------------------*/
+    .hero-section {
+        background: linear-gradient(135deg, var(--primary-color), var(--secondary-color)), url('SLIKE/KOMP.png') no-repeat center center;
+        background-size: cover;
+        color: #fff;
+        text-align: center;
+        padding: 50px 0 100px;
+        position: relative;
+        overflow: hidden;
+    }
+
+    .hero-section::before {
+        content: '';
+        position: absolute;
+        width: 150%;
+        height: 150%;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        background: 
+                radial-gradient(circle at 70% 20%, rgba(255,255,255,0.05) 0%, transparent 30%),
+                linear-gradient(45deg, transparent 60%, rgba(255,107,107,0.08));
+        z-index: 0;
+        pointer-events: none;
+    }
+
+    .hero-section::after {
+        content: '';
+        position: absolute;
+        bottom: -50px; /* Ispravljen pozicioni bug */
+        left: -50px;
+        width: 300px;
+        height: 300px;
+        background: radial-gradient(circle, var(--accent-color) 0%, transparent 70%);
+        opacity: 0.15;
+        filter: blur(80px);
+        z-index: 0;
+    }
+
+    .hero-logo {
+        max-width: 610px;
+        margin-bottom: 0.5rem !important;
+        height: auto;
+        animation: softAppear 1.1s ease forwards; /* Dodajte 'forwards' */
+        opacity: 0; /* Ovo ostaje za početnu vrijednost */
+        position: relative; /* Dodajte ovo ako logo treba da bude iznad efekata */
+        z-index: 1;
+    }
+
+    .example-section .container {
+        position: relative;
+        z-index: 1;
+    }
+
+    @keyframes softAppear {
+        0% { 
+            opacity: 0; 
+            transform: scale(0.98); 
+        }
+        100% { 
+            opacity: 1; /* Ovo će ostati trajno zbog 'forwards' */
+            transform: scale(1); 
+        }
+    }
+
+    .cta-hero {
+        margin-top: 2rem;
+    }
+
+    /* Dugme Join Now! - tamno plavo, sa svetlo plavim "sjajem" */
+    .btn-join-now {
+        position: relative;
+        background-color: var(--primary-color);
+        color: #fff;
+        border: none;
+        font-size: 1.2rem;
+        padding: 0.8rem 2rem;
+        border-radius: 50px;
+        box-shadow: 0 0 15px var(--secondary-color);
+        transition: all 0.3s ease;
+        z-index: 1;
+    }
+
+    .btn-join-now:hover {
+        background-color: var(--accent-color); /* Promenjeno iz secondary u accent */
+        box-shadow: 0 0 30px var(--accent-color), 0 0 10px var(--accent-color); /* Promenjeno */
+        color: #fff;
+        transform: scale(1.05);
+        z-index: 1;
+    }
+
+    /* ----------------
+         KARTICE (Globalni Doseg, itd.)
+    ------------------*/
+    .mission-card {
+        border: none;
+        border-radius: 15px;
+        background: #fff;
+        color: #333;
+        box-shadow: 0 8px 30px rgba(0, 0, 0, 0.12);
+        transition: transform 0.3s;
+        z-index: 1;
+    }
+
+    .mission-card:hover {
+        transform: scale(1.02);
+        box-shadow: 0 12px 35px rgba(0, 0, 0, 0.18);
+        border-bottom: 3px solid var(--accent-color); /* Nova linija */
+        z-index: 1;
+    }
+
+    .mission-card h3 {
+        color: var(--primary-color);
+        z-index: 1;
+    }
+    
+    /* ----------------
+       MISIJA & INFO
+    ------------------*/
+    .info-section {
+      padding: 60px 0;
+    }
+    .info-section h2 {
+      color: var(--primary-color);
+      font-weight: 700;
+    }
+    .info-section p, .info-section li {
+      line-height: 1.6;
+    }
+
+    /* ----------------
+       PLANOVI
+    ------------------*/
+    .pricing-card {
+      border: 3px solid var(--primary-color);
+      border-radius: 15px;
+      margin: 20px 0;
+      transition: all 0.3s ease;
+      background: #fff;
+    }
+    .pricing-card:hover {
+      box-shadow: 0 0 15px rgba(0, 0, 0, 0.15);
+      transform: scale(1.02);
+    }
+    .b2b-card {
+    border-color: var(--accent-color);
+    background: linear-gradient(45deg, #fff 85%, var(--accent-color) 95%);
+    }
+    /* Animacija za B2B karticu */
+     @keyframes pulse-accent {
+     0% { box-shadow: 0 0 0 0 rgba(255,107,107,0.4); }
+     70% { box-shadow: 0 0 0 15px rgba(255,107,107,0); }
+     100% { box-shadow: 0 0 0 0 rgba(255,107,107,0); }
+    }
+
+    .b2b-card {
+    animation: pulse-accent 1.5s infinite;
+    }
+
+    /* ----------------
+       AI PULSE (slika)
+    ------------------*/
+    .ai-pulse {
+      animation: pulse 2s infinite;
+    }
+    @keyframes pulse {
+      0%   { transform: scale(1); }
+      50%  { transform: scale(1.05); }
+      100% { transform: scale(1); }
+    }
+
+    /* ----------------
+       TEHNICKE IKONE
+    ------------------*/
+    .tech-icon {
+      font-size: 2.5rem;
+      color: var(--primary-color);
+      margin-bottom: 15px;
+      cursor: pointer;
+      transition: transform 0.3s; 
+    }
+    .tech-icon:hover {
+      transform: scale(1.3);
+      color: var(--secondary-color);
+    }
+
+    
+    /* ----------------
+       PRAKTICAN PRIMER
+    ------------------*/
+    .example-section {
+        position: relative;
+        overflow: visible;
+        padding: 100px 0 150px; /* Dodajemo veći donji padding */
+        background: linear-gradient(to bottom, #E0F0FF, #FFFFFF);
+    }
+
+    .background-image {
+        position: absolute;
+        right: -3%;
+        top: 50%;
+        transform: translateY(-50%);
+        width: 60%;
+        height: 120%;
+        opacity: 0.2;
+        background-image: url('SLIKE/MININGAXE.png');
+        background-size: contain;
+        background-repeat: no-repeat;
+        background-position: right center;
+        z-index: 0;
+        filter: grayscale(100%);
+    }
+
+    .example-section .container {
+        position: relative;
+        z-index: 1;
+    }
+
+    /* Video sekcija */
+    .video-section {
+        position: relative;
+        z-index: 1;
+        background: linear-gradient(to bottom, #FFFFFF, #E0F0FF);
+        padding-top: 100px; /* Kompenzacija za prelivanje */
+        margin-top: -100px; /* Povlačimo sekciju naviše */
+    }
+
+    @media (max-width: 1200px) {
+        .background-image {
+            right: -20%;
+            width: 70%;
+            opacity: 0.15;
+        }
+    }
+
+    @media (max-width: 992px) {
+        .background-image {
+            right: -25%;
+            width: 80%;
+        }
+    }
+
+    @media (max-width: 768px) {
+        .background-image {
+            right: -30%;
+            width: 100%;
+            opacity: 0.1;
+        }
+        .example-section {
+            padding: 60px 0 100px;
+        }
+        .video-section {
+            margin-top: -60px;
+            padding-top: 60px;
+        }
+    }
+</style>
+    <style>
+      /* ----------------
+       VIDEO SEKCIJA
+      - -----------------*/
+      .video-section {
+        padding: 60px 0;
+        background: linear-gradient(to bottom, #FFFFFF, #E0F0FF);
+      }
+      .video-section h2 {
+       color: var(--primary-color);
+       font-weight: 700;
+       margin-bottom: 30px;
+       text-align: center;
+      }
+  
+      /* ----------------
+         TEHNOLOSKA INFRA
+      ------------------*/
+      .tech-section {
+        background: #f8f9fa;
+        padding: 60px 0;
+      }
+      .tech-section h2 {
+        color: var(--primary-color);
+        font-weight: 700;
+        margin-bottom: 1rem;
+      }
+      .tech-section p {
+        max-width: 750px;
+        margin: 0 auto 2rem;
+        text-align: center;
+        color: #555;
+      }
+  
+      /* ----------------
+         VIZIJA
+      ------------------*/
+      .vision-section {
+        background: #000;
+        color: #fff;
+        padding: 80px 0;
+        text-align: center;
+      }
+      /* Boldovano i hover animacija za "Naša Vizija" i text */
+      .vision-section h2 strong {
+        font-weight: 800;
+      }
+      /* Sve unutar vision-section što je text treba da reaguje na hover */
+      .vision-section:hover h2, 
+      .vision-section:hover p {
+        color: var(--secondary-color);
+        transform: scale(1.05);
+        transition: color 0.4s, transform 0.3s;
+      }
+  
+      /* ----------------
+         NEWSLETTER 
+      ------------------*/
+      .newsletter-section {
+        background: linear-gradient(135deg, #F0F9FF, #FFFFFF);
+        padding: 60px 0;
+      }
+      .newsletter-section h2 {
+        color: var(--primary-color);
+        font-weight: 700;
+        margin-bottom: 1rem;
+      }
+      .newsletter-section .form-control {
+        border-radius: 50px;
+        padding: 1rem;
+      }
+      .newsletter-section .btn-newsletter {
+        border-radius: 50px;
+        padding: 0.7rem 2rem;
+        background: var(--primary-color);
+        color: #fff;
+        font-weight: 600;
+        transition: background 0.3s, transform 0.3s;
+        box-shadow: 0 0 10px var(--secondary-color);
+      }
+      
+      .newsletter-section .btn-newsletter:hover {
+        background-color: var(--accent-color); /* Promenjeno iz secondary u accent */
+        box-shadow: 0 0 30px var(--accent-color), 0 0 10px var(--accent-color); /* Promenjeno */
+        color: #fff;
+        transform: scale(1.05);
+      }
+  
+      /* ----------------
+         FAQ
+      ------------------*/
+      .faq-section {
+        background: #f8f9fa;
+        padding: 60px 0;
+      }
+      .faq-section h2 {
+        color: var(--primary-color);
+        font-weight: 700;
+        margin-bottom: 2rem;
+        text-align: center;
+      }
+      .faq-item {
+        margin-bottom: 1.5rem;
+        transition: transform 0.3s;
+      }
+      .faq-item:hover {
+        transform: scale(1.01);
+      }
+      .faq-item h5 {
+        font-weight: 600;
+        margin-bottom: 0.5rem;
+        color: #333;
+      }
+      .faq-item p {
+        margin-bottom: 0;
+        color: #555;
+      }
+  
+      /* ----------------
+         FOOTER
+      ------------------*/
+      footer {
+        background: #333;
+        color: #ddd;
+        padding: 30px 0;
+      }
+      footer .footer-links a {
+        color: #aaa;
+        text-decoration: none;
+        margin-right: 15px;
+        transition: color 0.2s, transform 0.2s;
+      }
+      footer .footer-links a:hover {
+        color: var(--secondary-color);
+        transform: scale(1.1);
+      }
+      .footer-social i {
+        color: #aaa;
+        margin-right: 15px;
+        font-size: 1.2rem;
+        transition: color 0.2s, transform 0.2s;
+      }
+      .footer-social i:hover {
+        color: #fff;
+        transform: scale(1.2);
+      }
+      /* --------- Crna linija ispod naslova --------- */
+      .info-section h2,
+      .video-section h2,
+      .tech-section h2,
+      .faq-section h2 {
+         position: relative;
+         padding-bottom: 15px;
+    }  
+
+    .info-section h2:after,
+    .video-section h2:after,
+    .tech-section h2:after,
+    .faq-section h2:after {
+       content: '';
+       position: absolute;
+       bottom: 0;
+       left: 50%;
+       transform: translateX(-50%);
+       width: 80px;
+       height: 3px;
+       background: var(--accent-color);
+    }    
+
+      /* Responsivno */
+      @media (max-width: 576px) {
+        .hero-section {
+          padding: 100px 0;
+        }
+        .hero-logo {
+          max-width: 180px;
+        }
+        .vision-section:hover h2,
+        .vision-section:hover p {
+          transform: none; /* da ne deluje previše */
+        }
+      }
+
+[data-theme="dark"] {
+    --primary-color: #1a1a1a;
+    --secondary-color: #43baff;
+    --accent-color: #0062ff;
+    --bg-color: #121212;
+    --text-color: #e0e0e0;
+    --card-bg: #1E1E1E;
+    --section-bg: #2D2D2D;
+    --padding-bg: #1a1a1a; /* Dodata varijabla za tamnu boju paddinga */
+}
+
+[data-theme="dark"] body {
+    background-color: var(--bg-color) !important;
+    color: var(--text-color) !important;
+}
+
+/* Navigacija */
+[data-theme="dark"] .navbar {
+    background-color: var(--section-bg) !important;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.9) !important;
+}
+
+/* Sekcija "Naša Misija" */
+[data-theme="dark"] .info-section {
+    background-color: var(--card-bg) !important;
+}
+[data-theme="dark"] .info-section p {
+    color: var(--text-color) !important;
+}
+
+/* Sekcija "Demonstracija Platforme" */
+[data-theme="dark"] #video-sekcija {
+    background: linear-gradient(to bottom, #2D2D2D, #1A1A1A) !important;
+    color: var(--secondary-color) !important;
+    padding: 60px 0 !important; /* Dodata tamna boja paddinga */
+}
+
+[data-theme="dark"] #video-sekcija h2,
+[data-theme="dark"] #video-sekcija .container,
+[data-theme="dark"] #video-sekcija video {
+    color: inherit !important;
+}
+
+/* Sekcija "Naši Planovi" */
+[data-theme="dark"] #planovi {
+    background-color: var(--section-bg) !important;
+    padding: 60px 0 !important; /* Dodata tamna boja paddinga */
+}
+
+/* Sekcija "Ostanimo u kontaktu!" */
+[data-theme="dark"] .newsletter-section {
+    background: linear-gradient(135deg, #2D2D2D, #1A1A1A) !important;
+    --text-color: #e0e0e0;
+}
+
+/* Praktičan primer - beli tekst */
+[data-theme="dark"] .example-section,
+[data-theme="dark"] .example-section p,
+[data-theme="dark"] .example-section h2 {
+    color: #fff !important;
+}
+
+/* Globalni naslovi */
+[data-theme="dark"] h1,
+[data-theme="dark"] h2,
+[data-theme="dark"] h3 {
+    color: var(--secondary-color) !important;
+}
+[data-theme="dark"] body {
+    background-color: var(--bg-color) !important;
+    color: var(--text-color) !important;
+}
+
+[data-theme="dark"] .bg-light {
+    background-color: var(--card-bg) !important;
+    color: var(--text-color) !important;
+}
+
+[data-theme="dark"] .text-muted {
+    color: #aaa !important;
+}
+
+[data-theme="dark"] .btn-light {
+    background-color: var(--section-bg) !important;
+    color: var(--text-color) !important;
+}
+
+[data-theme="dark"] .mission-card,
+[data-theme="dark"] .pricing-card,
+[data-theme="dark"] .b2b-card {
+    background: linear-gradient(45deg, var(--card-bg) 85%, var(--accent-color) 95%) !important;
+    border-color: var(--accent-color) !important;
+    color: var(--text-color) !important;
+}
+
+[data-theme="dark"] .b2b-card h3 {
+    color: var(--secondary-color) !important;
+}
+
+[data-theme="dark"] .b2b-card .text-muted {
+    color: #888 !important;
+}
+
+[data-theme="dark"] .hero-section {
+    background: linear-gradient(135deg, #121212, #1a1a1a) !important;
+}
+
+[data-theme="dark"] .example-section {
+    background: linear-gradient(to bottom, #1A1A1A, #2D2D2D) !important;
+}
+
+[data-theme="dark"] .video-section {
+    background: linear-gradient(to bottom, #2D2D2D, #1A1A1A) !important;
+}
+
+
+[data-theme="dark"] .tech-section,
+[data-theme="dark"] .faq-section {
+    background-color: var(--section-bg) !important;
+}
+
+[data-theme="dark"] footer {
+    background-color: #000 !important;
+}
+
+[data-theme="dark"] .background-image {
+    filter: grayscale(100%) brightness(0.5) !important;
+}
+
+[data-theme="dark"] img {
+    filter: brightness(0.8) contrast(1.2);
+}
+
+[data-theme="dark"] .hero-logo {
+    filter: invert(56%) sepia(44%) saturate(1536%) hue-rotate(174deg) brightness(104%) contrast(101%) !important;
+}
+
+[data-theme="dark"] .tech-icon {
+color: var(--accent-color) !important;
+}
+
+/* DODAJ OVDE - POČETAK */
+[data-theme="dark"] .tech-section,
+[data-theme="dark"] .faq-section,
+[data-theme="dark"] .newsletter-section {
+color: var(--text-color) !important;
+}
+
+[data-theme="dark"] .tech-section p,
+[data-theme="dark"] .faq-section p,
+[data-theme="dark"] .newsletter-section p,
+[data-theme="dark"] .tech-section li,
+[data-theme="dark"] .faq-section li,
+[data-theme="dark"] .newsletter-section li {
+color: var(--text-color) !important;
+}
+
+[data-theme="dark"] .newsletter-section {
+background: linear-gradient(135deg, #2D2D2D, #1A1A1A) !important;
+}
+
+[data-theme="dark"] .info-section h2,
+[data-theme="dark"] .video-section h2,
+
+[data-theme="dark"] .info-section h2,
+[data-theme="dark"] .video-section h2,
+[data-theme="dark"] .tech-section h2,
+[data-theme="dark"] .faq-section h2 {
+    color: var(--secondary-color) !important;
+}
+[data-theme="dark"] .faq-item h5 {
+    color: var(--text-color) !important;
+}
+
+[data-theme="dark"] .mission-card h3,
+[data-theme="dark"] .pricing-card h3 {
+    color: var(--accent-color) !important;
+}
+
+[data-theme="dark"] footer .footer-links a {
+    color: #ccc !important;
+}
+
+[data-theme="dark"] footer .footer-social i {
+    color: #ddd !important;
+}
+
+/* Transicije */
+body {
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+[data-theme="dark"] * {
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+#themeToggle .fa-sun {
+            color: #FFD700 !important;
+        }
+
+        [data-theme="dark"] #themeToggle .fa-moon {
+            color: var(--secondary-color) !important;
+        }
+        
+    </style>
+    </style>
+</head>
+<body>
+  <!-- Navigacija (header) -->
+<nav class="navbar navbar-expand-lg navbar-dark fixed-top">
+    <div class="container">
+      <!-- Minimalan brending u navigaciji -->
+      <a class="navbar-brand" href="#">
+        EduAI
+      </a>
+      <button
+        class="navbar-toggler"
+        type="button"
+        data-bs-toggle="collapse"
+        data-bs-target="#navbarNav"
+        aria-controls="navbarNav"
+        aria-expanded="false"
+        aria-label="Uključi navigaciju"
+      >
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav ms-auto">
+            <li class="nav-item">
+                <button class="btn btn-link nav-link" id="translateButton">
+                  <i class="fas fa-globe"></i> EN
+                </button>
+              </li>
+          <li class="nav-item"><a class="nav-link" href="#misija" data-translate="misija">Misija</a></li>
+          <li class="nav-item"><a class="nav-link" href="#sta-je" data-translate="sta_je">Šta je EduAI?</a></li>
+          <li class="nav-item"><a class="nav-link" href="#primer" data-translate="primer">Praktičan primer</a></li>
+          <li class="nav-item"><a class="nav-link" href="#video-sekcija" data-translate="video">Video</a></li> 
+          <li class="nav-item"><a class="nav-link" href="#planovi" data-translate="planovi">Planovi</a></li>
+          <li class="nav-item"><a class="nav-link" href="#tech-sekcija" data-translate="tech">Tehnologija</a></li>
+          <li class="nav-item"><a class="nav-link" href="#vizija" data-translate="vizija">Vizija</a></li>
+          <li class="nav-item">
+            <button class="btn btn-link nav-link" id="themeToggle">
+              <i class="fas fa-moon"></i>
+            </button>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Hero Sekcija -->
+  <section class="hero-section" id="uvod">
+    <div class="container">
+      <img src="SLIKE2/LOGO.png" alt="EduAI Logo" class="hero-logo mb-2">
+      <h1 class="fw-bold display-4 mt-0 mb-2" data-translate="hero_title"> <strong>Obrazovanje Bez Granica</strong></h1>
+      <p class="lead fs-4 mt-2" data-translate="hero_subtitle">
+        Budućnost znanja je otvorena – otkrij je kroz A.I
+      </p>
+  
+      <!-- Dugme Join Now! -->
+      <div class="cta-hero">
+        <a href="#planovi" class="btn-join-now" data-translate="join">
+          Join Now!
+        </a>
+      </div>
+  
+      <!-- Tri kartice -->
+      <div class="row mt-5 g-4">
+        <div class="col-md-4">
+          <article class="mission-card p-4 h-100">
+            <i class="fas fa-globe-americas tech-icon" aria-hidden="true"></i>
+            <h3 data-translate="card1_title">Globalni Doseg</h3>
+            <p data-translate="card1_text">
+              Dostupno na 50+ jezika, optimizovano za sve vremenske zone
+            </p>
+          </article>
+        </div>
+        <div class="col-md-4">
+          <article class="mission-card p-4 h-100">
+            <i class="fas fa-brain tech-icon" aria-hidden="true"></i>
+            <h3 data-translate="card2_title">Personalizovano Učenje</h3>
+            <p data-translate="card2_text">
+              Adaptivni AI koji prilagođava tempo i stil za svakog učenika
+            </p>
+          </article>
+        </div>
+        <div class="col-md-4">
+          <article class="mission-card p-4 h-100">
+            <i class="fas fa-hand-holding-usd tech-icon" aria-hidden="true"></i>
+            <h3 data-translate="card3_title">Pristupačnost</h3>
+            <p data-translate="card3_text">
+                
+              Besplatni osnovni nivo + skalabilni premium modeli
+            </p>
+          </article>
+        </div>
+      </div>
+      <div class="background-image2" style="background-image: url('SLIKE2/KOMP.png');"></div>
+    </div>
+  </section>
+
+  <!-- Misija (skraćena) -->
+  <section class="info-section" id="misija">
+    <div class="container">
+        <h2 class="mb-3 text-center fw-bold mission-title" data-translate="mission_title">Naša Misija</h2>
+        <p data-translate="mission_p1" class="mission-text">
+            Milionima ljudi širom sveta kvalitetno obrazovanje i dalje je nedostižno. <strong class="highlight-text" data-translate="mission_strong1">Naša misija</strong> je da preoblikujemo obrazovanje i učinimo ga dostupnim svima, bez obzira na <strong class="highlight-text" data-translate="mission_strong2">ekonomske, geografske ili društvene prepreke</strong>.
+        </p>
+        <p class="mb-0 mission-text" data-translate="mission_p2">
+            Pružamo znanje koje se može odmah primeniti u školi, na poslu ili u svakodnevnom životu, <strong class="highlight-text" data-translate="mission_strong3">spajajući tehnologiju i edukaciju na zabavan i jednostavan način</strong>.
+        </p>
+    </div>
+</section>
+
+  <!-- Šta je EduAI? -->
+  <section class="py-5 bg-light" id="sta-je">
+    <div class="container">
+      <h2 class="mb-4 fw-bold" data-translate="sta_je_title"><strong>Šta je EduAI?</strong></h2>
+      <div class="row align-items-center">
+        <div class="col-md-6 mb-4 mb-md-0">
+          <img
+            src="SLIKE2/PRIMER2.jpg"
+            alt="AI Mentor"
+            class="img-fluid ai-pop"
+          >
+        </div>
+        <div class="col-md-6">
+          <p data-translate="sta_je_p1">
+            <strong>EduAI</strong> je <strong>platforma nove generacije</strong>
+            koja pruža <strong>interaktivno i fleksibilno učenje</strong>,
+            uz podršku AI avatara kao ličnih mentora.
+          </p>
+          <p data-translate="sta_je_p2">
+            Za razliku od statičnih onlajn kurseva, naši korisnici dobijaju
+            <strong>odgovore u realnom vremenu</strong>, mogu postavljati pitanja
+            i pristupati personalizovanim planovima razvoja veština.
+          </p>
+          <p data-translate="sta_je_p3">
+            Bez obzira na to da li ste <em><strong>student, profesionalac</strong></em>
+            ili <em><strong>u nekoj drugoj oblasti</strong></em>, EduAI se prilagođava
+            vašem nivou znanja i tempu učenja.
+          </p>
+          <!-- New paragraph added here -->
+          <p class="mb-0">Naša tehnologija, zasnovana na <strong>veštačkoj inteligenciji</strong>, analizira vaš napredak i predlaže sledeće korake kako biste što brže stigli do svojih ciljeva. Uz EduAI, učite <strong>pametnije</strong>, <strong>brže</strong> i na <strong>način koji vam najviše odgovara</strong> – bilo kad i bilo gde.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+ <!-- Praktičan primer korisnika -->
+ <section class="example-section" id="primer">
+    <div class="background-image" style="background-image: url('SLIKE2/MININGAXE.png');"></div>
+    <div class="container">
+      <h2 class="fw-bold" style="font-size: 2.2rem;" data-translate="primer_title">Praktičan primer korisnika</h2>
+      <p style="font-size: 1.1rem;" data-translate="primer_p1">
+        <strong data-translate="primer_strong1">Primer studenta koji uči rudarstvo i geologiju:</strong><br>
+        Zamislimo Marka, studenta koji je upisao modul o <strong>rudarstvu i geologiji</strong>. 
+        Kroz platformu, Marko bira poglavlja o <strong>mineralogiji, stratigrafiji i sigurnosnim procedurama</strong> u rudnicima. 
+        AI avatar prati njegov napredak, <strong>ističe oblasti koje su mu teške</strong>, 
+        <strong>sugeriše dodatne resurse</strong> za detaljnije razumevanje i <strong>prilagođava nivo zadataka</strong>.
+      </p>
+      <p style="font-size: 1.1rem;" data-translate="primer_p2">
+        Kada Marko postavi specifična pitanja, poput: 
+        <strong><em data-translate="primer_em">„Koje metode se koriste za ispitivanje rudnih nalazišta u ekstremnim uslovima?”</em></strong>, 
+        njegov AI mentor <strong>odmah generiše precizne odgovore</strong> i <strong>pruža relevantne studije slučaja</strong> iz različitih rudarskih regija sveta. 
+        Ovaj način interakcije omogućava Marku da <strong>brzo dobije odgovore</strong> na svoja pitanja, 
+        <strong>učestvuje u analizi stvarnih primera</strong> i <strong>temeljno savlada kompleksne teme</strong>. 
+        U poređenju sa tradicionalnim kursevima, EduAI <strong>štedi Marku vreme i novac</strong>, 
+        jer je obrazovanje <strong>prilagođeno njegovim potrebama i tempu</strong>.
+      </p>
+    </div>
+</section>
+
+  <!-- Video Sekcija -->
+  <section class="my-5" id="video-sekcija">
+    <div class="container">
+      <h2 class="text-center mb-4 fw-bold" style="color: var(--primary-color);" data-translate="demo_title">Demonstracija Platforme</h2>
+      <div class="row g-4">
+        <!-- First Video -->
+        <div class="col-md-6">
+          <div class="ratio ratio-16x9">
+            <video controls class="w-100">
+              <source src="VIDEOSNIMCI/MARKOMINING.mp4" type="video/mp4">
+            </video>
+          </div>
+        </div>
+        
+        <!-- Second Video -->
+        <div class="col-md-6">
+          <div class="ratio ratio-16x9">
+            <video controls class="w-100">
+              <source src="VIDEOSNIMCI/MARKOMINING2.mp4" type="video/mp4">
+            </video>
+          </div>
+        </div>
+      </div>
+    </div>
+</section>
+
+ <!-- Planovi -->
+<section class="py-5" id="planovi">
+    <div class="container">
+        <h2 class="text-center mb-5" data-translate="plans_title"><strong>Naši Planovi</strong></h2>
+        <div class="row">
+            <!-- Osnovni Plan -->
+            <div class="col-lg-3 col-md-6">
+                <div class="pricing-card p-4 text-center">
+                    <h3 data-translate="basic_plan">Osnovni</h3>
+                    <div class="price display-5 my-3" data-translate="free">Besplatno</div>
+                    <p class="fw-bold">GPT-3.5</p>
+                    <p class="small text-muted" data-translate="monthly_50">50 odgovora mesečno</p>
+                    <button
+                        class="btn btn-outline-primary w-100 mt-3"
+                        type="button"
+                        data-bs-toggle="modal"
+                        data-bs-target="#osnovniModal"
+                        data-translate="learn_more"
+                    >
+                        Saznaj više
+                    </button>
+                </div>
+            </div>
+            
+            <!-- Standard Plan -->
+            <div class="col-lg-3 col-md-6">
+                <div class="pricing-card p-4 bg-primary text-white text-center">
+                    <h3 data-translate="standard_plan">Standard</h3>
+                    <div class="price display-5 my-3" data-translate="monthly_30">$30 / mesečno</div>
+                    <p class="fw-bold">GPT-4o</p>
+                    <p class="small" data-translate="monthly_500">500 odgovora mesečno</p>
+                    <button
+                        class="btn btn-light w-100 mt-3"
+                        type="button"
+                        data-bs-toggle="modal"
+                        data-bs-target="#standardModal"
+                        data-translate="learn_more"
+                    >
+                        Saznaj više
+                    </button>
+                </div>
+            </div>
+
+            <!-- Premium Plan -->
+            <div class="col-lg-3 col-md-6">
+                <div class="pricing-card p-4 bg-dark text-white text-center">
+                    <h3 data-translate="premium_plan">Premium</h3>
+                    <div class="price display-5 my-3" data-translate="monthly_60">$60 / mesečno</div>
+                    <p class="fw-bold">GPT-4o (real-time)</p>
+                    <p class="small" data-translate="monthly_1000">1000 odgovora mesečno</p>
+                    <button
+                        class="btn btn-light w-100 mt-3"
+                        type="button"
+                        data-bs-toggle="modal"
+                        data-bs-target="#premiumModal"
+                        data-translate="learn_more"
+                    >
+                        Saznaj više
+                    </button>
+                </div>
+            </div>
+
+            <!-- B2B Plan -->
+<div class="col-lg-3 col-md-6">
+    <div class="pricing-card p-4 b2b-card text-center">
+        <h3 class="text-danger" data-translate="b2b_plan">Biznis</h3>
+        <div class="price display-5 my-3" data-translate="custom_price">Po dogovoru</div>
+        <p class="fw-bold" data-translate="gpt4_custom">GPT-4o + prilagođeni modeli</p>
+        <p class="small text-muted" data-translate="unlimited">Neograničeno (tim/organizacija)</p>
+        <button
+            class="btn btn-danger w-100 mt-3"
+            type="button"
+            data-bs-toggle="modal"
+            data-bs-target="#biznisModal"
+            data-translate="learn_more"
+        >
+            Saznaj više
+        </button>
+    </div>
+</div>
+        </div>
+    </div>
+</section>
+
+<!-- ===== MODALS ZA PLANOVE ===== -->
+<!-- Osnovni Modal -->
+<div class="modal fade" id="osnovniModal" tabindex="-1" aria-hidden="true">
+    <div class="modal-dialog modal-lg modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" data-translate="basic_package">Osnovni Paket</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Zatvori"></button>
+            </div>
+            <div class="modal-body">
+                <p><strong data-translate="price">Cena:</strong> <span data-translate="free">Besplatno</span></p>
+                <p><strong data-translate="gpt_model">GPT Model:</strong> GPT-3.5</p>
+                <p><strong data-translate="limit">Limit:</strong> <span data-translate="monthly_50">50 odgovora mesečno</span></p>
+                <p><strong data-translate="features">Funkcionalnosti i pogodnosti:</strong></p>
+                <ul>
+                    <li data-translate="basic_access">Pristup osnovnim lekcijama i kursevima</li>
+                    <li data-translate="standard_avatar">Standardni AI avatar</li>
+                    <li data-translate="notes">Beleške i sažeci lekcija</li>
+                    <li data-translate="ads">Reklame u interfejsu</li>
+                </ul>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" data-translate="close">Zatvori</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Standard Modal -->
+<div class="modal fade" id="standardModal" tabindex="-1" aria-hidden="true">
+    <div class="modal-dialog modal-lg modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" data-translate="standard_package">Standard Paket</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Zatvori"></button>
+            </div>
+            <div class="modal-body">
+                <p><strong data-translate="price">Cena:</strong> <span data-translate="monthly_30">$30 mesečno</span></p>
+                <p><strong data-translate="gpt_model">GPT Model:</strong> GPT-4o</p>
+                <p><strong data-translate="limit">Limit:</strong> <span data-translate="monthly_500">500 odgovora mesečno</span></p>
+                <p><strong data-translate="features">Funkcionalnosti i pogodnosti:</strong></p>
+                <ul>
+                    <li data-translate="advanced_access">Pristup naprednim lekcijama i kursevima</li>
+                    <li data-translate="personalized_avatar">Personalizovani AI avatar i glas</li>
+                    <li data-translate="pdf_notes">Preuzimanje beleški (PDF)</li>
+                    <li data-translate="no_ads">Bez reklama</li>
+                    <li data-translate="3_classrooms">Do 3 učionice</li>
+                    <li data-translate="learning_analytics">Learning analytics (praćenje napretka)</li>
+                </ul>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" data-translate="close">Zatvori</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+  <!-- Premium Modal -->
+<div class="modal fade" id="premiumModal" tabindex="-1" aria-hidden="true">
+    <div class="modal-dialog modal-lg modal-dialog-centered">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" data-translate="premium_package">Premium Paket</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Zatvori"></button>
+        </div>
+        <div class="modal-body">
+          <p><strong data-translate="price">Cena:</strong> <span data-translate="monthly_60">$60 / mesečno</span></p>
+          <p><strong data-translate="gpt_model">GPT Model:</strong> <span data-translate="gpt4_real">GPT-4o (real-time)</span></p>
+          <p><strong data-translate="limit">Limit:</strong> <span data-translate="monthly_1000">1000 odgovora mesečno</span></p>
+          <p><strong data-translate="features">Funkcionalnosti i pogodnosti:</strong></p>
+          <ul>
+            <li data-translate="premium_feature1">Neograničen pristup lekcijama</li>
+            <li data-translate="premium_feature2">Visoko personalizovani AI avatar i glas</li>
+            <li data-translate="premium_feature3">Pristup ekskluzivnim temama</li>
+            <li data-translate="premium_feature4">Prioritetna korisnička podrška</li>
+            <li data-translate="premium_feature5">Neograničen broj classroom-a</li>
+            <li data-translate="premium_feature6">Snimanje predavanja i beleške</li>
+            <li data-translate="premium_feature7">Learning analytics</li>
+          </ul>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" data-translate="close">Zatvori</button>
+        </div>
+      </div>
+    </div>
+  </div>
+  
+  <!-- Biznis Modal -->
+  <div class="modal fade" id="biznisModal" tabindex="-1" aria-hidden="true">
+    <div class="modal-dialog modal-lg modal-dialog-centered">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" data-translate="biznis_package">B2B (Biznis) Paket</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Zatvori"></button>
+        </div>
+        <div class="modal-body">
+          <p><strong data-translate="price">Cena:</strong> <span data-translate="custom_price">Po dogovoru</span></p>
+          <p><strong data-translate="gpt_model">GPT Model:</strong> <span data-translate="gpt4_custom">GPT-4o + prilagođeni modeli</span></p>
+          <p><strong data-translate="limit">Limit:</strong> <span data-translate="unlimited">Neograničeno</span></p>
+          <p><strong data-translate="features">Funkcionalnosti i pogodnosti:</strong></p>
+          <ul>
+            <li data-translate="biznis_feature1">Prilagođene AI funkcije</li>
+            <li data-translate="biznis_feature2">Admin panel za praćenje</li>
+            <li data-translate="biznis_feature3">Integracija sa resursima</li>
+            <li data-translate="biznis_feature4">Dedikovana podrška</li>
+            <li data-translate="biznis_feature5">White label rešenje</li>
+          </ul>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" data-translate="close">Zatvori</button>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- KRAJ - MODALS -->
+
+  <!-- In the tech-section -->
+<section class="tech-section" id="tech-sekcija">
+    <div class="container">
+      <h2 class="text-center mb-4" data-translate="tech_infrastructure"><strong>Tehnološka Infrastruktura</strong></h2>
+      <p class="text-center" data-translate="tech_description">
+        Naša platforma koristi najnovije tehnologije kako bi obezbedila stabilno, brzo i sigurno okruženje za učenje.
+      </p>
+      <div class="row text-center">
+        <!-- Cloud Hosting -->
+        <div class="col-md-3">
+          <i class="fas fa-server tech-icon" 
+             data-bs-toggle="modal" 
+             data-bs-target="#techModal1"></i>
+          <h5 data-translate="tech_cloud_title">Cloud Hosting</h5>
+          <p data-translate="tech_cloud_desc">Skalabilna i pouzdana infrastruktura u oblaku.</p>
+        </div>
+        
+        <!-- Sigurnost Podataka -->
+        <div class="col-md-3">
+          <i class="fas fa-lock tech-icon" 
+             data-bs-toggle="modal" 
+             data-bs-target="#techModal2"></i>
+          <h5 data-translate="tech_security_title">Sigurnost Podataka</h5>
+          <p data-translate="tech_security_desc">Napredne mere zaštite i enkripcije podataka.</p>
+        </div>
+        
+        <!-- AI Integracija -->
+        <div class="col-md-3">
+          <i class="fas fa-robot tech-icon" 
+             data-bs-toggle="modal" 
+             data-bs-target="#techModal3"></i>
+          <h5 data-translate="tech_ai_title">AI Integracija</h5>
+          <p data-translate="tech_ai_desc">Personalizovani AI asistenti za svakog korisnika.</p>
+        </div>
+  
+        <!-- 3D Dizajn -->
+        <div class="col-md-3">
+          <i class="fas fa-user-tie tech-icon"  
+             data-bs-toggle="modal" 
+             data-bs-target="#techModal4"></i>
+          <h5 data-translate="tech_3d_title">3D Dizajn Avatara</h5>
+          <p data-translate="tech_3d_desc">Napredno modelovanje i animacija u Blenderu</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+<!-- Cloud Hosting Modal -->
+<div class="modal fade" id="techModal1" tabindex="-1" aria-labelledby="techModalLabel1" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="techModalLabel1" data-translate="tech_cloud_modal_title">
+            <i class="fas fa-server me-2"></i>Cloud Hosting
+          </h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Zatvori"></button>
+        </div>
+        <div class="modal-body">
+          <p data-translate="tech_cloud_modal_content">Napredna cloud rešenja:</p>
+          <ul>
+            <li data-translate="tech_cloud_modal_point1">Globalna mreža servera garantuje dostupnost platforme u svakom trenutku.</li>
+            <li data-translate="tech_cloud_modal_point2">Sistem automatski povećava kapacitet kako bi podržao rast broja korisnika.</li>
+            <li data-translate="tech_cloud_modal_point3">Napredna zaštita podataka i redovni bekapi čine platformu bezbednom i pouzdanom.</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="modal fade" id="techModal2" tabindex="-1" aria-labelledby="techModalLabel2" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="techModalLabel2" data-translate="tech_security_modal_title">
+                    <i class="fas fa-lock me-2"></i>Sigurnost Podataka
+                </h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Zatvori"></button>
+            </div>
+            <div class="modal-body">
+                <p data-translate="tech_security_modal_content">Naši sigurnosni standardi uključuju:</p>
+                <ul>
+                    <li data-translate="tech_security_modal_point1">Sigurno i pouzdano čuva informacije o korisnicima, kursevima i njihovom napretku.</li>
+                    <li data-translate="tech_security_modal_point2">Omogućava brzo pretraživanje i pristup velikoj količini podataka.</li>
+                    <li data-translate="tech_security_modal_point3">Fleksibilno upravljanje podacima koje omogućava prilagođavanje potrebama korisnika i platforme.</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="modal fade" id="techModal3" tabindex="-1" aria-labelledby="techModalLabel3" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="techModalLabel3" data-translate="tech_ai_modal_title">
+                    <i class="fas fa-robot me-2"></i>AI Integracija
+                </h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Zatvori"></button>
+            </div>
+            <div class="modal-body">
+                <p data-translate="tech_ai_modal_content">Naša AI platforma koristi:</p>
+                <ul>
+                    <li data-translate="tech_ai_modal_point1">OpenAI API (GPT-4o): Jezički model za razumevanje i generisanje teksta u realnom vremenu.</li>
+                    <li data-translate="tech_ai_modal_point2">Fine-tuning tehnologija: Prilagođava AI model edukativnim materijalima specifičnim za platformu.</li>
+                    <li data-translate="tech_ai_modal_point3">NLP (Natural Language Processing): Obrada prirodnog jezika za interaktivne i precizne odgovore.</li>
+                    <li data-translate="tech_ai_modal_point4">Integracija sa baze podataka: Omogućava personalizovane odgovore bazirane na napretku korisnika (napredna analitika).</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="modal fade" id="techModal4" tabindex="-1" aria-labelledby="techModalLabel4" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="techModalLabel4" data-translate="tech_3d_modal_title">
+                    <i class="fas fa-user-tie me-2"></i>3D Dizajn Avatara
+                </h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Zatvori"></button>
+            </div>
+            <div class="modal-body">
+                <p data-translate="tech_3d_modal_content">Avatari kreirani u Blenderu:</p>
+                <ul>
+                    <li data-translate="tech_3d_modal_point1">Kreirani su u 3D softveru za animaciju kako bi izgledali realistično i privlačno</li>
+                    <li data-translate="tech_3d_modal_point2">Svaki avatar može biti personalizovan prema željama korisnika (glas, izgled, gestikulacija)</li>
+                    <li data-translate="tech_3d_modal_point3">Pomažu u stvaranju prijatnog i motivišućeg okruženja za učenje</li>
+                    <li data-translate="tech_3d_modal_point4">Podržavaju kompleksne animacije i interakcije u realnom vremenu</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+  <!-- Vizija + Hover animacija -->
+<section class="vision-section" id="vizija">
+    <div class="container">
+      <h2 class="mb-4" data-translate="vision_title"><strong>Naša Vizija</strong></h2>
+      <p class="lead w-75 mx-auto" data-translate="vision_text">
+        Naša vizija je da stvorimo globalnu obrazovnu platformu koja ne samo da pruža znanje, već i aktivno motiviše, inspiriše i podstiče ljude svih uzrasta i profila na kontinuirano unapređenje, otkrivanje svojih potencijala i ostvarivanje ličnih i profesionalnih ciljeva u dinamičnom i podržavajućem okruženju.
+      </p>
+    </div>
+  </section>
+  
+  <section id="newsletter" class="newsletter-section">
+    <div class="container">
+      <div class="row justify-content-center">
+        <div class="col-md-8 text-center">
+          <h2 data-translate="newsletter_title">Ostanimo u kontaktu!</h2>
+          <p class="mb-4" data-translate="newsletter_text">
+            Prijavite se na naš newsletter i pratite novosti u vezi sa EduAI platformom,
+            novim kursevima i specijalnim ponudama.
+          </p>
+          <form class="row g-3 justify-content-center">
+            <div class="col-md-6">
+                <input
+                type="email"
+                class="form-control"
+                placeholder="Unesite Vašu e-poštu..."
+                data-translate="newsletter_placeholder"
+                required
+              >
+            </div>
+            <div class="col-md-3">
+              <button type="submit" class="btn btn-newsletter w-100" data-translate="newsletter_button">
+                Prijavi se
+              </button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ -->
+  <section class="faq-section">
+    <div class="container">
+      <h2 data-translate="faq_title">Najčešća Pitanja (FAQ)</h2>
+      <div class="faq-item">
+        <h5 data-translate="faq1_question">Da li je Osnovni Paket zaista besplatan?</h5>
+        <p data-translate="faq1_answer">Da, naš Osnovni Paket vam omogućava 50 odgovora mesečno i pristup osnovnim kursevima, bez ikakvih troškova.</p>
+      </div>
+      <div class="faq-item">
+        <h5 data-translate="faq2_question">Koja je razlika između Standard i Premium paketa?</h5>
+        <p data-translate="faq2_answer">Standard pruža 500 odgovora mesečno i do 3 učionice, dok Premium nudi neograničen pristup, personalizovan AI avatar i VIP podršku.</p>
+      </div>
+      <div class="faq-item">
+        <h5 data-translate="faq3_question">Kako funkcioniše B2B paket?</h5>
+        <p data-translate="faq3_answer">Biznis paket je prilagođen kompanijama i institucijama. Nudi API povezivanje i analitiku za praćenje napretka tima, uz prilagođene AI funkcije. Cena zavisi od obima i potreba.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="mt-5">
+    <div class="container">
+      <div class="row align-items-center">
+        <div class="col-md-4">
+          <p class="mb-2">&copy; 2025 EduAI.</p>
+          <div class="footer-links">
+            <a href="#">Privacy Policy</a>
+            <a href="#">Terms</a>
+          </div>
+        </div>
+        <div class="col-md-4 text-center">
+            <p class="mb-0" data-translate="contact_info">Kontakt: info@eduai.com | +381 11 1234 567</p>
+        </div>
+        <div class="col-md-4 text-md-end footer-social">
+          <a href="#"><i class="fab fa-facebook-f"></i></a>
+          <a href="#"><i class="fab fa-linkedin-in"></i></a>
+          <a href="#"><i class="fab fa-instagram"></i></a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Bootstrap JS -->
+  <script
+    src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"
+  ></script>
+
+  <script>
+    /*
+      Hover animacija za "Naša Vizija" - 
+      OVDE se bavimo samo animacijom "slova postaju svetlo plava i uvecava se text".
+      Implementirano CSS-om unutar .vision-section:hover h2, p
+      ali moze i JS approach. 
+    */
+</script>
+
+<script>
+  let lastScroll = 0;
+  const navbar = document.querySelector('.navbar');
+  const navbarHeight = navbar.offsetHeight;
+
+  window.addEventListener('scroll', () => {
+    const currentScroll = window.pageYOffset;
+    
+    // Provera da li je korisnik skrolovao dovoljno (više od 100px) i u kom smeru
+    if (Math.abs(currentScroll - lastScroll) > 100) {
+      if (currentScroll > lastScroll && currentScroll > navbarHeight) {
+        // Skrol nadole - sakrij navigaciju
+        navbar.classList.add('scrolled-down');
+        navbar.classList.remove('scrolled-up');
+      } else {
+        // Skrol nagore - prikaži navigaciju
+        navbar.classList.add('scrolled-up');
+        navbar.classList.remove('scrolled-down');
+      }
+      lastScroll = currentScroll;
+    }
+
+    // Resetujemo ako smo na vrhu stranice
+    if (currentScroll === 0) {
+      navbar.classList.remove('scrolled-down');
+    }
+  });
+</script>
+<script>
+  // Prevod stranice
+  let isEnglish = false;
+
+    const translations = {
+      sr: {
+        misija: "Misija",
+        sta_je: "Šta je EduAI?",
+        primer: "Praktičan primer",
+        video: "Video",
+        planovi: "Planovi",
+        tech: "Tehnologija",
+        vizija: "Vizija",
+        newsletter: "Newsletter",
+        faq: "FAQ",
+        join: "Join Now!",
+        hero_title: "<strong>Obrazovanje Bez Granica</strong>",
+        hero_subtitle: "Budućnost znanja je otvorena – otkrij je kroz A.I",
+        card1_title: "Globalni Doseg",
+        card1_text: "Dostupno na 50+ jezika, optimizovano za sve vremenske zone",
+        card2_title: "Personalizovano Učenje",
+        card2_text: "Adaptivni AI koji prilagođava tempo i stil za svakog učenika",
+        card3_title: "Pristupačnost",
+        card3_text: "Besplatni osnovni nivo + skalabilni premium modeli",
+        mission_title: "Naša Misija",
+        mission_p1: "Milionima ljudi širom sveta kvalitetno obrazovanje i dalje je nedostižno. <strong class='highlight-text'>Naša misija</strong> je da preoblikujemo obrazovanje i učinimo ga dostupnim svima, bez obzira na <strong class='highlight-text'>ekonomske, geografske ili društvene prepreke</strong>.",
+        mission_p2: "Pružamo znanje koje se može odmah primeniti u školi, na poslu ili u svakodnevnom životu, <strong class='highlight-text'>spajajući tehnologiju i edukaciju na zabavan i jednostavan način</strong>.",
+        mission_strong1: "Naša misija",
+        mission_strong2: "ekonomske, geografske ili društvene prepreke",
+        mission_strong3: "spajajući tehnologiju i edukaciju na zabavan i jednostavan način",
+        sta_je_title: "Šta je EduAI?",
+        sta_je_p1: "<strong>EduAI</strong> je <strong>platforma nove generacije</strong> koja pruža <strong>interaktivno i fleksibilno učenje</strong>, uz podršku AI avatara kao ličnih mentora.",
+        sta_je_p2: "Za razliku od statičnih onlajn kurseva, naši korisnici dobijaju <strong>odgovore u realnom vremenu</strong>, mogu postavljati pitanja i pristupati personalizovanim planovima razvoja veština.",
+        sta_je_p3: "Bez obzira na to da li ste <em><strong>student, profesionalac</strong></em> ili <em><strong>u nekoj drugoj oblasti</strong></em>, EduAI se prilagođava vašem nivou znanja i tempu učenja.",
+        sta_je_p4: "Naša tehnologija, zasnovana na <strong>veštačkoj inteligenciji</strong>, analizira vaš napredak i predlaže sledeće korake kako biste što brže stigli do svojih ciljeva. Uz EduAI, učite <strong>pametnije</strong>, <strong>brže</strong> i na <strong>način koji vam najviše odgovara</strong> – bilo kad i bilo gde.",
+        primer_title: "Praktičan primer korisnika",
+        primer_strong1: "Primer studenta koji uči rudarstvo i geologiju:",
+        primer_p1: "<strong>Primer studenta koji uči rudarstvo i geologiju:</strong><br>Zamislimo Marka, studenta koji je upisao modul o <strong>rudarstvu i geologiji</strong>. Kroz platformu, Marko bira poglavlja o <strong>mineralogiji, stratigrafiji i sigurnosnim procedurama</strong> u rudnicima. AI avatar prati njegov napredak, <strong>ističe oblasti koje su mu teške</strong>, <strong>sugeriše dodatne resurse</strong> za detaljnije razumevanje i <strong>prilagođava nivo zadataka</strong>.",
+        primer_em: "„Koje metode se koriste za ispitivanje rudnih nalazišta u ekstremnim uslovima?”",
+        primer_p2: "Kada Marko postavi specifična pitanja, poput: <strong><em>„Koje metode se koriste za ispitivanje rudnih nalazišta u ekstremnim uslovima?”</em></strong>, njegov AI mentor <strong>odmah generiše precizne odgovore</strong> i <strong>pruža relevantne studije slučaja</strong> iz različitih rudarskih regija sveta. Ovaj način interakcije omogućava Marku da <strong>brzo dobije odgovore</strong> na svoja pitanja, <strong>učestvuje u analizi stvarnih primera</strong> i <strong>temeljno savlada kompleksne teme</strong>. U poređenju sa tradicionalnim kursevima, EduAI <strong>štedi Marku vreme i novac</strong>, jer je obrazovanje <strong>prilagođeno njegovim potrebama i tempu</strong>.",
+        demo_title: "Demonstracija Platforme",
+        plans_title: "<strong>Naši Planovi</strong>",
+        basic_plan: "Osnovni",
+        standard_plan: "Standard",
+        premium_plan: "Premium",
+        b2b_plan: "Biznis",
+        custom_price: "Po dogovoru",
+        gpt4_custom: "GPT-4o + prilagođeni modeli",
+        unlimited: "Neograničeno (tim/organizacija)",
+        free: "Besplatno",
+        monthly_30: "$30 / mesečno",
+        monthly_60: "$60 / mesečno",
+        monthly_50: "50 odgovora mesečno",
+        monthly_500: "500 odgovora mesečno",
+        monthly_1000: "1000 odgovora mesečno",
+        learn_more: "Saznaj više",
+        basic_package: "Osnovni Paket",
+        standard_package: "Standard Paket",
+        premium_package: "Premium Paket",
+        b2b_package: "B2B (Biznis) Paket",
+        price: "Cena:",
+        gpt_model: "GPT Model:",
+        limit: "Limit:",
+        features: "Funkcionalnosti i pogodnosti:",
+        basic_access: "Pristup osnovnim lekcijama i kursevima",
+        standard_avatar: "Standardni AI avatar",
+        notes: "Beleške i sažeci lekcija",
+        ads: "Reklame u interfejsu",
+        advanced_access: "Pristup naprednim lekcijama i kursevima",
+        personalized_avatar: "Personalizovani AI avatar i glas",
+        pdf_notes: "Preuzimanje beleški (PDF)",
+        no_ads: "Bez reklama",
+        "3_classrooms": "Do 3 učionice",
+        learning_analytics: "Learning analytics (praćenje napretka)",
+        close: "Zatvori",
+        premium_package: "Premium Paket",
+        biznis_package: "B2B (Biznis) Paket",
+        gpt4_real: "GPT-4o (real-time)",
+        gpt4_custom: "GPT-4o + prilagođeni modeli",
+        monthly_60: "$60 / mesečno",
+        monthly_1000: "1000 odgovora mesečno",
+        premium_feature1: "Neograničen pristup lekcijama",
+        premium_feature2: "Visoko personalizovani AI avatar i glas (izgled, glas, odeća)",
+        premium_feature3: "Pristup ekskluzivnim temama i kursevima",
+        premium_feature4: "Prioritetna korisnička podrška",
+        premium_feature5: "Neograničen broj classroom-a",
+        premium_feature6: "Mogućnost snimanja predavanja i preuzimanje beleški",
+        premium_feature7: "Learning analytics (praćenje napretka)",
+        biznis_feature1: "Prilagođene AI funkcije za institucije",
+        biznis_feature2: "Admin panel za praćenje rezultata učenika/zaposlenih",
+        biznis_feature3: "Integracija sa sopstvenim resursima (API/baze podataka)",
+        biznis_feature4: "Dedikovana korisnička podrška i obuka tima",
+        biznis_feature5: "White label rešenje",
+        tech_infrastructure: "Tehnološka Infrastruktura",
+        tech_description: "Naša platforma koristi najnovije tehnologije kako bi obezbedila stabilno, brzo i sigurno okruženje za učenje.",
+        tech_cloud_title: "Cloud Hosting",
+        tech_cloud_desc: "Skalabilna i pouzdana infrastruktura u oblaku.",
+        tech_security_title: "Sigurnost Podataka",
+        tech_security_desc: "Napredne mere zaštite i enkripcije podataka.",
+        tech_ai_title: "AI Integracija",
+        tech_ai_desc: "Personalizovani AI asistenti za svakog korisnika.",
+        tech_3d_title: "3D Dizajn Avatara",
+        tech_3d_desc: "Napredno modelovanje i animacija u Blenderu",
+        tech_cloud_modal_title: "Cloud Hosting",
+        tech_cloud_modal_content: "Napredna cloud rešenja:",
+        tech_cloud_modal_point1: "Globalna mreža servera garantuje dostupnost platforme u svakom trenutku.",
+        tech_security_modal_title: "Sigurnost Podataka",
+        tech_security_modal_content: "Naši sigurnosni standardi uključuju:",
+        tech_security_modal_point1: "Sigurno i pouzdano čuva informacije o korisnicima, kursevima i njihovom napretku.",
+        tech_security_modal_point2: "Omogućava brzo pretraživanje i pristup velikoj količini podataka.",
+        tech_security_modal_point3: "Fleksibilno upravljanje podacima koje omogućava prilagođavanje potrebama korisnika i platforme.",
+        
+        tech_ai_modal_title: "AI Integracija",
+        tech_ai_modal_content: "Naša AI platforma koristi:",
+        tech_ai_modal_point1: "OpenAI API (GPT-4o): Jezički model za razumevanje i generisanje teksta u realnom vremenu.",
+        tech_ai_modal_point2: "Fine-tuning tehnologija: Prilagođava AI model edukativnim materijalima specifičnim za platformu.",
+        tech_ai_modal_point3: "NLP (Natural Language Processing): Obrada prirodnog jezika za interaktivne i precizne odgovore.",
+        tech_ai_modal_point4: "Integracija sa baze podataka: Omogućava personalizovane odgovore bazirane na napretku korisnika (napredna analitika).",
+        
+        tech_3d_modal_title: "3D Dizajn Avatara",
+        tech_3d_modal_content: "Avatari kreirani u Blenderu:",
+        tech_3d_modal_point1: "Kreirani su u 3D softveru za animaciju kako bi izgledali realistično i privlačno",
+        tech_3d_modal_point2: "Svaki avatar može biti personalizovan prema željama korisnika (glas, izgled, gestikulacija)",
+        tech_3d_modal_point3: "Pomažu u stvaranju prijatnog i motivišućeg okruženja za učenje",
+        tech_3d_modal_point4: "Podržavaju kompleksne animacije i interakcije u realnom vremenu",
+        vision_title: "<strong>Naša Vizija</strong>",
+        vision_text: "Naša vizija je da stvorimo globalnu obrazovnu platformu koja ne samo da pruža znanje, već i aktivno motiviše, inspiriše i podstiče ljude svih uzrasta i profila na kontinuirano unapređenje, otkrivanje svojih potencijala i ostvarivanje ličnih i profesionalnih ciljeva u dinamičnom i podržavajućem okruženju.",
+        newsletter_title: "Ostanimo u kontaktu!",
+        newsletter_text: "Prijavite se na naš newsletter i pratite novosti u vezi sa EduAI platformom, novim kursevima i specijalnim ponudama.",
+        newsletter_placeholder: "Unesite Vašu e-poštu...",
+        newsletter_button: "Prijavi se",
+        faq_title: "Najčešća Pitanja (FAQ)",
+        faq1_question: "Da li je Osnovni Paket zaista besplatan?",
+        faq1_answer: "Da, naš Osnovni Paket vam omogućava 50 odgovora mesečno i pristup osnovnim kursevima, bez ikakvih troškova.",
+        faq2_question: "Koja je razlika između Standard i Premium paketa?",
+        faq2_answer: "Standard pruža 500 odgovora mesečno i do 3 učionice, dok Premium nudi neograničen pristup, personalizovan AI avatar i VIP podršku.",
+        faq3_question: "Kako funkcioniše B2B paket?",
+        faq3_answer: "Biznis paket je prilagođen kompanijama i institucijama. Nudi API povezivanje i analitiku za praćenje napretka tima, uz prilagođene AI funkcije. Cena zavisi od obima i potreba.",
+        contact_info: "Kontakt: info@eduai.com | +381 11 1234 567",
+        },
+      
+        en: { // EN PREVODI MORAJU BITI UNUTAR translations OBJEKTA
+        misija: "Mission",
+        sta_je: "What is EduAI?",
+        primer: "Practical Example",
+        video: "Video",
+        planovi: "Plans",
+        tech: "Technology",
+        vizija: "Vision",
+        newsletter: "Newsletter",
+        faq: "FAQ",
+        join: "Join Now!",
+        hero_title: "<strong>Education Without Borders</strong>",
+        hero_subtitle: "The future of knowledge is open - discover it through AI",
+        card1_title: "Global Reach",
+        card1_text: "Available in 50+ languages, optimized for all time zones",
+        card2_title: "Personalized Learning",
+        card2_text: "Adaptive AI that adjusts pace and style for each student",
+        card3_title: "Accessibility",
+        card3_text: "Free basic tier + scalable premium models",
+        mission_title: "Our Mission",
+        mission_p1: "Quality education remains inaccessible to millions of people worldwide. <strong class='highlight-text'>Our mission</strong> is to transform education and make it available to everyone, regardless of <strong class='highlight-text'>economic, geographic, or social barriers</strong>.",
+        mission_p2: "We provide knowledge that can be immediately applied in school, at work, or in everyday life, <strong class='highlight-text'>combining technology and education in a fun and simple way</strong>.",
+        mission_strong1: "Our mission",
+        mission_strong2: "economic, geographic, or social barriers",
+        mission_strong3: "combining technology and education in a fun and simple way",
+        sta_je_title: "What is EduAI?",
+        sta_je_p1: "<strong>EduAI</strong> is a <strong>next-generation platform</strong> that provides <strong>interactive and flexible learning</strong> with support from AI avatars as personal mentors.",
+        sta_je_p2: "Unlike static online courses, our users receive <strong>real-time responses</strong>, can ask questions, and access personalized skill development plans.",
+        sta_je_p3: "Whether you're a <em><strong>student, professional</strong></em>, or <em><strong>in any other field</strong></em>, EduAI adapts to your knowledge level and learning pace.",
+        sta_je_p4: "Our technology, powered by <strong>artificial intelligence</strong>, analyzes your progress and suggests next steps to help you reach your goals faster. With EduAI, learn <strong>smarter</strong>, <strong>faster</strong>, and in the <strong>way that suits you best</strong> - anytime, anywhere.",
+        primer_title: "Practical User Example",
+        primer_p1: "<strong>Example of a student studying mining and geology:</strong><br>Let's imagine Mark, a student who enrolled in a module on <strong>mining and geology</strong>. Through the platform, Mark selects chapters on <strong>mineralogy, stratigraphy, and safety procedures</strong> in mines. The AI avatar tracks his progress, <strong>highlights challenging areas</strong>, <strong>suggests additional resources</strong> for deeper understanding, and <strong>adapts task difficulty levels</strong>.",
+        primer_em: "„What methods are used for testing mineral deposits in extreme conditions?”",
+        primer_p2: "When Mark asks specific questions like: <strong><em>„What methods are used for testing mineral deposits in extreme conditions?”</em></strong>, his AI mentor <strong>immediately generates precise answers</strong> and <strong>provides relevant case studies</strong> from various mining regions worldwide. This interaction method enables Mark to <strong>quickly get answers</strong> to his questions, <strong>participate in analysis of real cases</strong>, and <strong>thoroughly master complex topics</strong>. Compared to traditional courses, EduAI <strong>saves Mark time and money</strong>, as the education is <strong>tailored to his needs and pace</strong>.",
+        demo_title: "Platform Demonstration",
+        plans_title: "<strong>Our Plans</strong>",
+        basic_plan: "Basic",
+        standard_plan: "Standard",
+        premium_plan: "Premium",
+        b2b_plan: "Business",
+        custom_price: "Custom pricing",
+        gpt4_custom: "GPT-4o + custom models",
+        unlimited: "Unlimited (team/organization)",
+        free: "Free",
+        monthly_30: "$30 / month",
+        monthly_60: "$60 / month",
+        monthly_50: "50 responses monthly",
+        monthly_500: "500 responses monthly",
+        monthly_1000: "1000 responses monthly",
+        learn_more: "Learn More",
+        basic_package: "Basic Package",
+        standard_package: "Standard Package",
+        premium_package: "Premium Package",
+        b2b_package: "B2B (Business) Package",
+        price: "Price:",
+        gpt_model: "GPT Model:",
+        limit: "Limit:",
+        features: "Features and Benefits:",
+        basic_access: "Access to basic lessons and courses",
+        standard_avatar: "Standard AI avatar",
+        notes: "Notes and lesson summaries",
+        ads: "Ads in interface",
+        advanced_access: "Access to advanced lessons and courses",
+        personalized_avatar: "Personalized AI avatar and voice",
+        pdf_notes: "Download notes (PDF)",
+        no_ads: "No ads",
+        "3_classrooms": "Up to 3 classrooms",
+        learning_analytics: "Learning analytics (progress tracking)",
+        close: "Close",
+        premium_package: "Premium Package",
+        biznis_package: "B2B (Business) Package",
+        gpt4_real: "GPT-4o (real-time)",
+        gpt4_custom: "GPT-4o + custom models",
+        monthly_60: "$60 / month",
+        monthly_1000: "1000 responses monthly",
+        premium_feature1: "Unlimited access to lessons",
+        premium_feature2: "Highly personalized AI avatar and voice (appearance, voice, clothing)",
+        premium_feature3: "Access to exclusive topics and courses",
+        premium_feature4: "Priority customer support",
+        premium_feature5: "Unlimited classrooms",
+        premium_feature6: "Lecture recording and note downloading",
+        premium_feature7: "Learning analytics (progress tracking)",
+        biznis_feature1: "Custom AI functions for institutions",
+        biznis_feature2: "Admin panel for tracking student/employee results",
+        biznis_feature3: "Integration with own resources (API/databases)",
+        biznis_feature4: "Dedicated customer support and team training",
+        biznis_feature5: "White label solution",
+        tech_infrastructure: "Technological Infrastructure",
+        tech_description: "Our platform uses the latest technologies to provide a stable, fast, and secure learning environment.",
+        tech_cloud_title: "Cloud Hosting",
+        tech_cloud_desc: "Scalable and reliable cloud infrastructure.",
+        tech_security_title: "Data Security",
+        tech_security_desc: "Advanced data protection and encryption measures.",
+        tech_ai_title: "AI Integration",
+        tech_ai_desc: "Personalized AI assistants for each user.",
+        tech_3d_title: "3D Avatar Design",
+        tech_3d_desc: "Advanced modeling and animation in Blender",
+        tech_cloud_modal_title: "Cloud Hosting",
+        tech_cloud_modal_content: "Advanced cloud solutions:",
+        tech_cloud_modal_point1: "Global server network ensures platform availability at all times.",
+        tech_security_modal_title: "Data Security",
+        tech_security_modal_content: "Our security standards include:",
+        tech_security_modal_point1: "Secure and reliable storage of user information, courses, and progress.",
+        tech_security_modal_point2: "Enables fast search and access to large amounts of data.",
+        tech_security_modal_point3: "Flexible data management that adapts to user and platform needs.",
+        
+        tech_ai_modal_title: "AI Integration",
+        tech_ai_modal_content: "Our AI platform uses:",
+        tech_ai_modal_point1: "OpenAI API (GPT-4o): Language model for real-time text understanding and generation.",
+        tech_ai_modal_point2: "Fine-tuning technology: Adapts AI models to platform-specific educational materials.",
+        tech_ai_modal_point3: "NLP (Natural Language Processing): Natural language processing for interactive and precise responses.",
+        tech_ai_modal_point4: "Database integration: Enables personalized responses based on user progress (advanced analytics).",
+        
+        tech_3d_modal_title: "3D Avatar Design",
+        tech_3d_modal_content: "Avatars created in Blender:",
+        tech_3d_modal_point1: "Created in 3D animation software to look realistic and appealing",
+        tech_3d_modal_point2: "Each avatar can be personalized according to user preferences (voice, appearance, gestures)",
+        tech_3d_modal_point3: "Help create a pleasant and motivating learning environment",
+        tech_3d_modal_point4: "Support complex animations and real-time interactions",
+        vision_title: "<strong>Our Vision</strong>",
+        vision_text: "Our vision is to create a global educational platform that not only provides knowledge but also actively motivates, inspires, and encourages people of all ages and backgrounds to continuously improve, discover their potential, and achieve personal and professional goals in a dynamic and supportive environment.",
+        newsletter_title: "Let's Stay in Touch!",
+        newsletter_text: "Subscribe to our newsletter and follow the latest news about the EduAI platform, new courses, and special offers.",
+        newsletter_placeholder: "Enter your email...",
+        newsletter_button: "Subscribe",
+        faq_title: "Frequently Asked Questions (FAQ)",
+        faq1_question: "Is the Basic Package really free?",
+        faq1_answer: "Yes, our Basic Package provides 50 responses per month and access to basic courses, completely free of charge.",
+        faq2_question: "What is the difference between the Standard and Premium packages?",
+        faq2_answer: "The Standard package offers 500 responses per month and up to 3 classrooms, while the Premium package provides unlimited access, a personalized AI avatar, and VIP support.",
+        faq3_question: "How does the B2B package work?",
+        faq3_answer: "The Business package is tailored for companies and institutions. It offers API integration and analytics for tracking team progress, along with custom AI functions. Pricing depends on the scope and needs.",
+        contact_info: "Contact: info@eduai.com | +381 11 1234 567",
+       }
+
+    };
+    function toggleLanguage() {
+  const html = document.documentElement;
+  isEnglish = !isEnglish;
+  html.lang = isEnglish ? 'en' : 'sr';
+  
+  document.querySelectorAll('[data-translate]').forEach(el => {
+    const key = el.dataset.translate;
+    const translation = translations[isEnglish ? 'en' : 'sr'][key];
+    if (translation) {
+      if (el.tagName === 'INPUT' && el.hasAttribute('placeholder')) {
+        el.placeholder = translation; // Ažuriraj placeholder za input elemente
+      } else {
+        el.innerHTML = translation; // Ažuriraj innerHTML za ostale elemente
+      }
+    }
+  });
+
+  translateButton.innerHTML = isEnglish 
+    ? '<i class="fas fa-globe"></i> SR' 
+    : '<i class="fas fa-globe"></i> EN';
+}
+  // EVENT LISTENER MORA BITI OVDE
+  translateButton.addEventListener('click', toggleLanguage);
+  </script>
+<script>
+    // Dark/Light tema
+    const themeToggle = document.getElementById('themeToggle');
+    const body = document.body;
+    
+    function toggleTheme() {
+      const isDark = body.getAttribute('data-theme') === 'dark';
+      body.setAttribute('data-theme', isDark ? 'light' : 'dark');
+      
+      if(isDark) {
+        themeToggle.innerHTML = '<i class="fas fa-moon"></i>';
+      } else {
+        themeToggle.innerHTML = '<i class="fas fa-sun"></i>';
+      }
+      
+      localStorage.setItem('theme', isDark ? 'light' : 'dark');
+    }
+  
+    // Inicijalizacija teme
+    const savedTheme = localStorage.getItem('theme');
+    if (savedTheme === 'dark') {
+      body.setAttribute('data-theme', 'dark');
+      themeToggle.innerHTML = '<i class="fas fa-sun"></i>';
+    } else {
+      body.setAttribute('data-theme', 'light');
+      themeToggle.innerHTML = '<i class="fas fa-moon"></i>';
+    }
+  
+    // Auto-detekcija sistemske teme
+    if (!savedTheme && window.matchMedia('(prefers-color-scheme: dark)').matches) {
+      body.setAttribute('data-theme', 'dark');
+      themeToggle.innerHTML = '<i class="fas fa-sun"></i>';
+    }
+  
+    themeToggle.addEventListener('click', toggleTheme);
+  </script>
+</body>
+</html>
