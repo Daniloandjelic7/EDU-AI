@@ -1,13 +1,13 @@
 <!DOCTYPE html>
-<html lang="sr">
+<html lang="en">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>EduAI - Obrazovna Revolucija</title>
   
   <!-- SEO Meta Tagovi -->
-  <meta name="description" content="EduAI pruža personalizovano i globalno dostupno obrazovanje korišćenjem veštačke inteligencije.">
-  <meta name="keywords" content="EduAI, univerzitet, obrazovanje, online učenje, veštačka inteligencija">
+  <meta name="description" content="EduAI provides personalized and globally available education using artificial intelligence.">
+  <meta name="keywords" content="EduAI, university, education, online learning, artificial intelligence">
 
   <!-- Bootstrap CSS -->
   <link
@@ -766,9 +766,9 @@ body {
         <ul class="navbar-nav ms-auto">
             <li class="nav-item">
                 <button class="btn btn-link nav-link" id="translateButton">
-                  <i class="fas fa-globe"></i> EN
+                  <i class="fas fa-globe"></i> SR <!-- Промена: EN → SR -->
                 </button>
-              </li>
+            </li>
           <li class="nav-item"><a class="nav-link" href="#misija" data-translate="misija">Misija</a></li>
           <li class="nav-item"><a class="nav-link" href="#sta-je" data-translate="sta_je">Šta je EduAI?</a></li>
           <li class="nav-item"><a class="nav-link" href="#primer" data-translate="primer">Praktičan primer</a></li>
@@ -1396,8 +1396,21 @@ body {
   });
 </script>
 <script>
-  // Prevod stranice
-  let isEnglish = false;
+  let isEnglish = true; // ОВАЈ РЕД МЕЊАМО - постављамо true
+
+document.addEventListener('DOMContentLoaded', function() {
+    updateTranslations(); // ДОДАЈ ОВАЈ РЕД
+});
+
+function updateTranslations() {
+    document.querySelectorAll('[data-translate]').forEach(el => {
+        const key = el.dataset.translate;
+        const translation = translations[isEnglish ? 'en' : 'sr'][key];
+        if (translation) el.innerHTML = translation;
+    });
+    document.getElementById('translateButton').innerHTML = 
+        `<i class="fas fa-globe"></i> ${isEnglish ? 'SR' : 'EN'}`;
+}
 
     const translations = {
       sr: {
@@ -1672,11 +1685,12 @@ body {
        }
 
     };
-    function toggleLanguage() {
-  const html = document.documentElement;
-  isEnglish = !isEnglish;
-  html.lang = isEnglish ? 'en' : 'sr';
-  
+  function toggleLanguage() {
+    isEnglish = !isEnglish;
+    document.documentElement.lang = isEnglish ? 'en' : 'sr';
+    updateTranslations();
+  }
+
   document.querySelectorAll('[data-translate]').forEach(el => {
     const key = el.dataset.translate;
     const translation = translations[isEnglish ? 'en' : 'sr'][key];
@@ -1690,9 +1704,9 @@ body {
   });
 
   translateButton.innerHTML = isEnglish 
-    ? '<i class="fas fa-globe"></i> SR' 
-    : '<i class="fas fa-globe"></i> EN';
-}
+  ? '<i class="fas fa-globe"></i> SR' 
+  : '<i class="fas fa-globe"></i> EN';
+
   // EVENT LISTENER MORA BITI OVDE
   translateButton.addEventListener('click', toggleLanguage);
   </script>
