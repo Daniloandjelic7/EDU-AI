@@ -636,6 +636,13 @@
 [data-theme="dark"] .hero-section {
     background: linear-gradient(135deg, #121212, #1a1a1a) !important;
 }
+[data-theme="dark"] .hero-section::after {
+    background: linear-gradient(to bottom, 
+        transparent 0%, 
+        rgba(18, 18, 18, 0.5) 50%,
+        rgba(18, 18, 18, 1) 100%
+    ) !important;
+}
 
 [data-theme="dark"] .example-section {
     background: linear-gradient(to bottom, #1A1A1A, #2D2D2D) !important;
@@ -903,29 +910,30 @@ body {
 </section>
 
   <!-- Video Sekcija -->
-  <section class="my-5" id="video-sekcija">
-    <div class="container">
+  <!-- Video Sekcija -->
+<section class="my-5" id="video-sekcija">
+  <div class="container">
       <h2 class="text-center mb-4 fw-bold" style="color: var(--primary-color);" data-translate="demo_title">Demonstracija Platforme</h2>
       <div class="row g-4">
-        <!-- First Video -->
-        <div class="col-md-6">
-          <div class="ratio ratio-16x9">
-            <video controls class="w-100">
-              <source src="VIDEOSNIMCI/MARKOMINING.mp4" type="video/mp4">
-            </video>
+          <!-- Prvi Video - Ovde dodajte poster atribut -->
+          <div class="col-md-6">
+              <div class="ratio ratio-16x9">
+                  <video controls class="w-100" poster="SLIKE2/VIDEO_THUMBNAIL1.jpg"> <!-- PROMENA OVDE -->
+                      <source src="VIDEOSNIMCI/MARKOMINING.mp4" type="video/mp4">
+                  </video>
+              </div>
           </div>
-        </div>
-        
-        <!-- Second Video -->
-        <div class="col-md-6">
-          <div class="ratio ratio-16x9">
-            <video controls class="w-100">
-              <source src="VIDEOSNIMCI/MARKOMINING2.mp4" type="video/mp4">
-            </video>
+          
+          <!-- Drugi Video - Ovde dodajte poster atribut -->
+          <div class="col-md-6">
+              <div class="ratio ratio-16x9">
+                  <video controls class="w-100" poster="SLIKE2/VIDEO_THUMBNAIL2.jpg"> <!-- PROMENA OVDE -->
+                      <source src="VIDEOSNIMCI/MARKOMINING2.mp4" type="video/mp4">
+                  </video>
+              </div>
           </div>
-        </div>
       </div>
-    </div>
+  </div>
 </section>
 
  <!-- Planovi -->
